@@ -1,10 +1,9 @@
 //import React from "react";
-// import { Link, useNavigate } from "react-router-dom";
+ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CustomerHeader = () => {
-    // let navigate = useNavigate();
   
     const userLogout = () => {
       toast.success("logged out!!!", {
@@ -26,34 +25,34 @@ const CustomerHeader = () => {
     return (
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
         <li className="nav-item">
-          {/* <Link
+          <Link
             to="/"
             className="nav-link active"
             aria-current="page"
-          > */}
+          >
             <b className="text-color">My Wallet</b>
-          {/* </Link> */}
+          </Link>
         </li>
   
         <li className="nav-item">
-          {/* <Link
+          <Link
             to="/"
             className="nav-link active"
             aria-current="page"
-          > */}
+          >
             <b className="text-color">Booked Turfs</b>
-          {/* </Link> */}
+          </Link>
         </li>
   
         <li className="nav-item">
-          {/* <Link
+          <Link
             to=""
             class="nav-link active"
             aria-current="page"
             onClick={userLogout}
-          > */}
+          >
             <b className="text-color">Logout</b>
-          {/* </Link> */}
+          </Link>
           <ToastContainer />
         </li>
       </ul>

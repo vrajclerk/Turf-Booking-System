@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom';x
+ import { Link } from 'react-router-dom';
 import RoleNav from './RoleNav';
 import logo from '../../images/logo.png';
 
@@ -13,11 +13,11 @@ const Header = () => {
         className="d-inline-block align-top"
         alt=""
       />
-      {/* <Link to="/" className="navbar-brand"> */}
+      <Link to="/" className="navbar-brand">
         <i>
           <b className="text-color">Turf Booking System</b>
         </i>
-      {/* </Link> */}
+      </Link>
 
       <button
         className="navbar-toggler"
@@ -33,15 +33,15 @@ const Header = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            {/* <Link to="/about" className="nav-link active" aria-current="page"> */}
+            <Link to="/about" className="nav-link active" aria-current="page">
               <b className="text-color">About Us</b>
-            {/* </Link> */}
+            </Link>
           </li>
 
           <li className="nav-item">
-            {/* <Link to="/contact" className="nav-link active" aria-current="page"> */}
+            <Link to="/contact" className="nav-link active" aria-current="page">
               <b className="text-color">Contact Us</b>
-            {/* </Link> */}
+            </Link>
           </li>
         </ul>
 
