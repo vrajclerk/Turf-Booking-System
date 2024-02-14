@@ -23,11 +23,11 @@ const Footer = () => {
 
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-color">
+                      <a href="/about" className="text-color">
                         Link 1
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#!" className="text-color">
                         Link 2
                       </a>
@@ -41,7 +41,7 @@ const Footer = () => {
                       <a href="#!" className="text-color">
                         Link 4
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
 
@@ -50,11 +50,11 @@ const Footer = () => {
 
                   <ul className="list-unstyled mb-0">
                     <li>
-                      <a href="#!" className="text-color">
+                      <a href="/contact" className="text-color">
                         Link 1
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#!" className="text-color">
                         Link 2
                       </a>
@@ -68,7 +68,7 @@ const Footer = () => {
                       <a href="#!" className="text-color">
                         Link 4
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
 
@@ -81,7 +81,7 @@ const Footer = () => {
                         Link 1
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#!" className="text-color">
                         Link 2
                       </a>
@@ -95,7 +95,7 @@ const Footer = () => {
                       <a href="#!" className="text-color">
                         Link 4
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
 
@@ -108,7 +108,7 @@ const Footer = () => {
                         Link 1
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a href="#!" className="text-color">
                         Link 2
                       </a>
@@ -122,7 +122,7 @@ const Footer = () => {
                       <a href="#!" className="text-color">
                         Link 4
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
