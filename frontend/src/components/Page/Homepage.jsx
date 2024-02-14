@@ -29,7 +29,7 @@ const HomePage = () => {
                 booking is a breeze. No more lengthy phone calls or waiting in
                 line – just a few clicks and you are all set!
               </p>
-              <Link to="/turf/all" className="btn bg-color custom-bg-text">
+              <Link to="/" className="btn bg-color custom-bg-text">
                 <button>Get Started</button>
               </Link>
             </div>
@@ -75,7 +75,7 @@ const HomePage = () => {
                 modern lighting systems for evening games, every aspect of our
                 partnered turfs is carefully curated to cater to your needs.
               </p>
-              <Link to="/turf/all" className="btn bg-color custom-bg-text ms-5">
+              <Link to="/" className="btn bg-color custom-bg-text ms-5">
                 <button>Get Started</button>
               </Link>
             </div>

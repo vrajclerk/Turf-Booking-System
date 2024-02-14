@@ -8,7 +8,7 @@ const Footer = () => {
             <section className="">
               <div className="row">
                 <div className="col-lg-4 col-md-6 mb-4 mb-md-0">
-                  <h5 className="text-uppercase text-color">Turf Booking System</h5>
+                  <h5 className="text-camelcase text-color"><i>BookYourTurf</i></h5>
 
                   <p>
                     Welcome to our Turf Booking System, your ultimate
