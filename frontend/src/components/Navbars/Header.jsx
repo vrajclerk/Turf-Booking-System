@@ -4,7 +4,8 @@ import logo from '../../images/logo.png';
 
 const Header = () => {
   return (
-    <div><nav className="navbar  navbar-expand-lg custom-bg text-color">
+    <div>
+    <nav className="navbar  navbar-expand-lg custom-bg text-color">
     <div className="container-fluid text-color">
       <img
         src={logo}

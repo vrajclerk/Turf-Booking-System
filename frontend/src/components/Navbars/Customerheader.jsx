@@ -1,10 +1,10 @@
 //import React from "react";
- import { Link } from "react-router-dom";
+ import { Link ,useNavigate} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CustomerHeader = () => {
-  
+  let navigate = useNavigate();
     const userLogout = () => {
       toast.success("logged out!!!", {
         position: "top-center",
@@ -18,7 +18,7 @@ const CustomerHeader = () => {
       sessionStorage.removeItem("active-customer");
       sessionStorage.removeItem("customer-jwtToken");
   
-    //   navigate("/home");
+       navigate("/home");
       window.location.reload(true);
     };
   

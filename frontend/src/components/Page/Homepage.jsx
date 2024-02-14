@@ -30,7 +30,7 @@ const HomePage = () => {
                 line – just a few clicks and you are all set!
               </p>
               <Link to="/turf/all" className="btn bg-color custom-bg-text">
-                <b>Get Started</b>
+                <button>Get Started</button>
               </Link>
             </div>
             <div className="col-md-4">
@@ -76,7 +76,7 @@ const HomePage = () => {
                 partnered turfs is carefully curated to cater to your needs.
               </p>
               <Link to="/turf/all" className="btn bg-color custom-bg-text ms-5">
-                <b>Get Started</b>
+                <button>Get Started</button>
               </Link>
             </div>
           </div>
