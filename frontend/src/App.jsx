@@ -7,6 +7,12 @@ import ContactUs from './components/Page/ContactUs'
 import AboutUs from './components/Page/AboutUs'
 import UserLoginForm from './components/User/UserLoginForm'
 import UserRegister from './components/User/UserRegister'
+import AddGroundForm from './components/Ground/AddGroundForm';
+import VerifyBooking from './components/Booking/VerifyBooking';
+import ViewAllBooking from './components/Booking/VerifyAllBooking';
+import ViewMyBooking from './components/Booking/VerifyMyBooking';
+import ViewAllTurf from './components/Ground/ViewAllTurf';
+import ViewAllGround from './components/Ground/ViewAllGround';
 
 function App() {
  
@@ -30,6 +36,22 @@ function App() {
         <Route path="/user/customer/register" element={<UserRegister />} />
         <Route path="/user/admin/register" element={<UserRegister />} />
         <Route path="/user/login" element={<UserLoginForm />} />
+
+        <Route path="admin/ground/add" element={<AddGroundForm />} />
+        <Route path="book/ground/add" element={<AddGroundForm />} />
+        {/* <Route path="user/customer/all" element={<ViewAllCustomer />} /> */}
+
+        {/* <Route path="/book/ground/:groundId" element={<Ground />} /> */}
+        <Route path="user/ground/bookings" element={<ViewMyBooking />} />
+        <Route path="user/ground/booking/all" element={<ViewAllBooking />} />
+        <Route
+          path="/user/admin/verify/booking/:bookingId"
+          element={<VerifyBooking />}
+        />
+        {/* <Route path="/customer/wallet" element={<MyWallet />} />
+        <Route path="/ground/review/add" element={<AddReview />} /> */}
+        <Route path="/admin/ground/all" element={<ViewAllGround />} />
+        <Route path="/turf/all" element={<ViewAllTurf />} />
 
         
         
