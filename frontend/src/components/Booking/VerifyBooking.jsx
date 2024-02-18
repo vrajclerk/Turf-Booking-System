@@ -48,7 +48,7 @@ const VerifyBooking = () => {
 
         getAllBookingStatus();
         getBooking();
-    }, [bookingId, retrieveBooking]);
+    }, []);
 
     const handleBookingInput = (e) => {
         setUpdateBookingStatus({
@@ -112,6 +112,7 @@ const VerifyBooking = () => {
     };
 
     return (
+        <>
         <div>
             <div className="mt-2 d-flex aligns-items-center justify-content-center mb-5">
                 <div
@@ -183,7 +184,7 @@ const VerifyBooking = () => {
                                         <option value="">Status</option>
 
                                         {bookingStatus.map((status) => {
-                                            return <option value={status}> {status} </option>;
+                                            return <><option value={status}> {status} </option></>;
                                         })}
                                     </select>
                                 </div>
@@ -203,6 +204,7 @@ const VerifyBooking = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

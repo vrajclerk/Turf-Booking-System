@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import star from "../images/star.png";
+import star from "../../images/star.png";
 
-const GetReviews = (ground) => {
+const GetReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   const { groundId } = useParams();
@@ -59,6 +59,7 @@ const GetReviews = (ground) => {
                 </div>
             );
         })}
+    </div>
     </div>
   );
 };

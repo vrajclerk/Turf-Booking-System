@@ -122,7 +122,7 @@ const MyWallet = () => {
           <div className="card-body">
             <form>
               <div className="mb-3 text-color">
-                <label for="emailId" class="form-label">
+                <label htmlFor="emailId" className="form-label">
                   <b>Amount</b>
                 </label>
                 <input

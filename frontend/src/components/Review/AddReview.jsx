@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import GroundCarousel from "../GroundComponent/GroundCarousel";
+import GroundCarousel from "../Ground/GroundCarousel";
 import { useLocation } from "react-router-dom";
 
 const AddReview = () => {
@@ -14,7 +14,7 @@ const AddReview = () => {
 
   const location = useLocation();
   const ground = location.state;
-  const [groundId, setGroundId] = useState(ground.id);
+  const [groundId, ] = useState(ground.id);
 
   let navigate = useNavigate();
 

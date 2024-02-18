@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ViewAllBooking = () => {
   const [allBookings, setAllBookings] = useState([]);
 
-  let user = JSON.parse(sessionStorage.getItem("active-customer"));
+  //let user = JSON.parse(sessionStorage.getItem("active-customer"));
 
   useEffect(() => {
     const getAllBooking = async () => {
@@ -28,6 +28,7 @@ const ViewAllBooking = () => {
   };
 
   return (
+    <>
     <div className="mt-3">
       <div
         className="card form-card ms-2 me-2 mb-5 custom-bg border-color "
@@ -63,6 +64,7 @@ const ViewAllBooking = () => {
               <tbody>
                 {allBookings.map((booking) => {
                   return (
+                    <>
                     <tr>
                       <td>
                         <img
@@ -120,14 +122,17 @@ const ViewAllBooking = () => {
                         })()}
                       </td>
                     </tr>
+                    </>
                   );
                 })}
+                
               </tbody>
             </table>
           </div>
         </div>
       </div>
     </div>
+    </>
   );
 };
 

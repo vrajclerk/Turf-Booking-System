@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import React from "react";
+//import React from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 const ViewMyBooking = () => {
   const [allBookings, setAllBookings] = useState([]);
 
   let user = JSON.parse(sessionStorage.getItem("active-customer"));
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   useEffect(() => {
     const getAllBooking = async () => {
@@ -117,15 +117,15 @@ const ViewMyBooking = () => {
               </thead>
               <tbody>
                 {allBookings.map((booking) => {
-                  return (
+                  return (<>
                     <tr>
                       <td>
                         <img
-                          src={
-                            "http://localhost:8080/api/ground/" +
-                            booking.groundImage
-                          }
-                          class="img-fluid"
+                          // src={
+                          //   "http://localhost:8080/api/ground/" +
+                          //   booking.groundImage
+                          // }
+                          className="img-fluid"
                           alt="product_pic"
                           style={{
                             maxWidth: "90px",
@@ -175,7 +175,7 @@ const ViewMyBooking = () => {
 
                         <ToastContainer />
                       </td>
-                    </tr>
+                    </tr></>
                   );
                 })}
               </tbody>

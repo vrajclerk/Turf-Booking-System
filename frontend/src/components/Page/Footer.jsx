@@ -136,7 +136,7 @@ const Footer = () => {
                 <Link to="/user/login" className="active">
                   <button
                     type="button"
-                    className="btn btn-outline-light btn-rounded bg-color custom-bg-text"
+                    className="btn btn-outline-dark btn-rounded bg-color-black "
                   >
                     Log in
                   </button>
