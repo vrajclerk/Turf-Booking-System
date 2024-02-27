@@ -3,7 +3,7 @@
 import  { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import RoleNav from './RoleNav';
-import logo1 from '../../images/logo2.png';
+import logo1 from '../../images/logo3.png';
 import './Header.css'; // Import the CSS file
 
 const Header = () => {
@@ -27,8 +27,9 @@ const Header = () => {
         <div className="container-fluid text-color">
           <img
             src={logo1}
-            width="80"
-            height="80"
+            width="70"
+            height="70"
+            style={{ margin: "5px" }}
             className="d-inline-block align-top"
             alt=""
           />
