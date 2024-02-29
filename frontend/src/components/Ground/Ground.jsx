@@ -10,7 +10,7 @@ const Ground = () => {
   const { groundId } = useParams();
 
   let user = JSON.parse(sessionStorage.getItem("active-customer"));
- // let admin = JSON.parse(sessionStorage.getItem("active-admin"));
+  let admin = JSON.parse(sessionStorage.getItem("active-admin"));
 
   const [timeSlots, setTimeSlots] = useState([]);
 

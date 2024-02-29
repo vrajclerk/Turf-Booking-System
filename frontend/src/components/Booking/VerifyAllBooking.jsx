@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ViewAllBooking = () => {
   const [allBookings, setAllBookings] = useState([]);
 
-  //let user = JSON.parse(sessionStorage.getItem("active-customer"));
+  let user = JSON.parse(sessionStorage.getItem("active-customer"));
 
   useEffect(() => {
     const getAllBooking = async () => {

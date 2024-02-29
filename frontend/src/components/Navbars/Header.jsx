@@ -52,11 +52,11 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            {/* <li className="nav-item">
                 <Link to="/admin/ground/all" className="nav-link active" aria-current="page">
                   <b className="text-color">View Ground</b>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/about" className="nav-link active" aria-current="page">
                   <b className="text-color">About Us</b>
