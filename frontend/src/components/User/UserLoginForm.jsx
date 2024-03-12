@@ -1,94 +1,113 @@
-import  { useState } from "react";
+import  { useState  } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 //import { useNavigate } from "react-router-dom";
 const UserLoginForm = () => {
     //let navigate = useNavigate();
-  
-    const [loginRequest, setLoginRequest] = useState({
+    const [role, setRole] = useState("");
+    const [data,setData] = useState({
       emailId: "",
       password: "",
-      role: "",
+      // role: "",
+      
     });
   
-    const handleUserInput = (e) => {
-      setLoginRequest({ ...loginRequest, [e.target.name]: e.target.value });
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
+  
+    const handleChange = (e) => {
+      setData({ ...data, [e.target.name]: e.target.value });
     };
   
-    const loginAction = (e) => {
-      fetch("http://localhost:8080/api/user/login", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginRequest),
-      })
-        .then((result) => {
-          console.log("result", result);
-          result.json().then((res) => {
-            console.log(res);
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        let url;
+        let res;
   
-            if (res.success) {
-              console.log("Got the success response");
-  
-              if (res.jwtToken !== null) {
-                console.log("JWT TOKEN not null, positive response");
-                if (res.user.role === "admin") {
-                  sessionStorage.setItem(
-                    "active-admin",
-                    JSON.stringify(res.user)
-                  );
-                  sessionStorage.setItem("admin-jwtToken", res.user.jwtToken);
-                } else if (res.user.role === "customer") {
-                  sessionStorage.setItem(
-                    "active-customer",
-                    JSON.stringify(res.user)
-                  );
-                  sessionStorage.setItem("customer-jwtToken", res.user.jwtToken);
-                }
-              }
-  
-              if (res.jwtToken !== null) {
-                toast.success(res.responseMessage, {
-                  position: "top-center",
-                  autoClose: 1000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });
-                setTimeout(() => {
-                  window.location.href = "/home";
-                }, 2000); // Redirect after 3 seconds
-              } else {
-                toast.error(res.responseMessage, {
-                  position: "top-center",
-                  autoClose: 1000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });
-              }
-            } else {
-              console.log("Didn't got success response");
-              toast.error("It seems server is down", {
-                position: "top-center",
-                autoClose: 1000,
+        if (role === "Customer") {
+          url = "http://localhost:8080/api/user/login";
+          const user = {
+            email: data.emailId,
+            password: data.password,
+          };
+          res = await axios
+            .post(url, user)
+            .then((res) => {
+              console.log(res.data);
+              localStorage.clear();
+              localStorage.setItem("user", JSON.stringify(res.data));
+              toast.success("Login Successfully", {
+                position: "top-right",
+                autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
+                closeButton: false,
               });
-            }
+              navigate("../home");
+            })
+            .catch((err) => {
+              setError(err.response.data);
+              toast.error(err.response.data, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                closeButton: false,
+              });
+            });
+        } else if (role === "Admin") {
+          url = "http://localhost:8080/api/user/login";
+          const  admin = {
+            email: data.emailId,
+            password: data.password,
+          }
+          res = await axios.post(
+            url,
+            admin,
+            // role
+          ).then((res) => {
+            localStorage.clear();
+            localStorage.setItem("admin", JSON.stringify(res.data));
+            toast.success("Login Successfully", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              closeButton: false,
+            });
+            navigate("../home");
+          })
+          .catch((err) => {
+            setError(err.response.data);
+            toast.error(err.response.data, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              closeButton: false,
+            });
           });
-        })
-        .catch((error) => {
-          console.error(error);
+        }
+         else {
+          console.log("Didn't got success response");
+        }
+      } catch (error) {
+        console.error(error);
           toast.error("It seems server is down", {
             position: "top-center",
             autoClose: 1000,
@@ -98,7 +117,7 @@ const UserLoginForm = () => {
             draggable: true,
             progress: undefined,
           });
-        });
+      }
       e.preventDefault();
     };
   
@@ -119,7 +138,7 @@ const UserLoginForm = () => {
                     <b>User Role</b>
                   </label>
                   <select
-                    onChange={handleUserInput}
+                    onChange={handleChange}
                     className="form-control"
                     name="role"
                   >
@@ -138,8 +157,8 @@ const UserLoginForm = () => {
                     className="form-control"
                     id="emailId"
                     name="emailId"
-                    onChange={handleUserInput}
-                    value={loginRequest.emailId}
+                    onChange={handleChange}
+                    value={data.emailId}
                   />
                 </div>
                 <div className="mb-3 text-color">
@@ -151,15 +170,16 @@ const UserLoginForm = () => {
                     className="form-control"
                     id="password"
                     name="password"
-                    onChange={handleUserInput}
-                    value={loginRequest.password}
+                    onChange={handleChange}
+                    value={data.password}
                     autoComplete="on"
                   />
                 </div>
+                {error && <div className="error_msg">{error}</div>}
                 <button
                   type="submit"
                   className="btn bg-color custom-bg-text"
-                  onClick={loginAction}
+                  onClick={handleSubmit}
                 >
                   Login
                 </button>

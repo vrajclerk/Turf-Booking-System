@@ -5,17 +5,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const UserRegister = () => {
     const [user, setUser] = useState({
-      firstName: "",
-      lastName: "",
-      emailId: "",
+      name: "",
+      email: "",
       password: "",
-      contact: "",
-      street: "",
+      address: "",
       city: "",
-      pincode: "",
       role: "",
-      age: "",
-      sex: "",
+      
     });
   
     const navigate = useNavigate();
@@ -32,27 +28,18 @@ const UserRegister = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
     };
   
-    const [genders, setGenders] = useState([]);
-  
-    const retrieveAllGenders = async () => {
-      const response = await axios.get("http://localhost:8080/api/user/gender");
-      return response.data;
+    const handleChange = (event) => {
+      setUser({
+        ...user ,
+        gender: event.target.value,
+      });
     };
-  
-    useEffect(() => {
-      const getAllGenders = async () => {
-        const allGenders = await retrieveAllGenders();
-        if (allGenders) {
-          setGenders(allGenders.genders);
-        }
-      };
-  
-      getAllGenders();
-    }, []);
-  
+
+    
     const saveUser = (event) => {
       event.preventDefault();
-      fetch("http://localhost:8080/api/user/register", {
+      console.log("User : ", user);
+      fetch("http://localhost:8080/api/user/admin/register", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -63,7 +50,7 @@ const UserRegister = () => {
         console.log("result", result);
         result.json().then((res) => {
           console.log(res);
-  
+           navigate("/user/login");
           if (res.success) {
             console.log("Got the success response");
   
@@ -77,9 +64,7 @@ const UserRegister = () => {
               progress: undefined,
             });
   
-            setTimeout(() => {
-              navigate("/user/login");
-            }, 1000); // Redirect after 3 seconds
+        // Redirect after 3 seconds
           } else {
             console.log("Didn't got success response");
             toast.error("It seems server is down", {
@@ -91,9 +76,9 @@ const UserRegister = () => {
               draggable: true,
               progress: undefined,
             });
-            setTimeout(() => {
-              window.location.reload(true);
-            }, 1000); // Redirect after 3 seconds
+            // setTimeout(() => {
+            //   window.location.reload(true);
+            // }, 1000); // Redirect after 3 seconds
           }
         });
       });
@@ -111,32 +96,20 @@ const UserRegister = () => {
             </div>
             <div className="card-body">
               <form className="row g-3" onSubmit={saveUser}>
-                <div className="col-md-6 mb-3 text-color">
+                <div className="col-md-19 mb-3 text-color">
                   <label htmlFor="title" className="form-label">
-                    <b> First Name</b>
+                    <b> Full Name</b>
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="firstName"
-                    name="firstName"
+                    id="name"
+                    name="name"
                     onChange={handleUserInput}
-                    value={user.firstName}
+                    value={user.name}
                   />
                 </div>
-                <div className="col-md-6 mb-3 text-color">
-                  <label htmlFor="description" className="form-label">
-                    <b>Last Name</b>
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="lastName"
-                    name="lastName"
-                    onChange={handleUserInput}
-                    value={user.lastName}
-                  />
-                </div>
+                
   
                 <div className="col-md-6 mb-3 text-color">
                   <b>
@@ -145,10 +118,10 @@ const UserRegister = () => {
                   <input
                     type="email"
                     className="form-control"
-                    id="emailId"
-                    name="emailId"
+                    id="email"
+                    name="email"
                     onChange={handleUserInput}
-                    value={user.emailId}
+                    value={user.email}
                   />
                 </div>
   
@@ -167,68 +140,21 @@ const UserRegister = () => {
                 </div>
   
                 <div className="col-md-6 mb-3 text-color">
-                  <label htmlFor="sex" className="form-label">
+                  <label htmlFor="gender" className="form-label">
                     <b>User Gender</b>
                   </label>
                   <select
-                    onChange={handleUserInput}
-                    className="form-control"
-                    name="sex"
-                  >
-                    <option value="0">Select Sex</option>
-  
-                    {genders.map((gender) => {
-                      return newFunction();
-
-                        function newFunction() {
-                            return <option value={gender}> {gender} </option>;
-                        }
-                    })}
-                  </select>
+                       onChange={handleChange}
+                      className="form-control"
+                      name="gender"
+                    >
+                  <option value="0">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
                 </div>
   
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="contact" className="form-label">
-                    <b>Contact No</b>
-                  </label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="contact"
-                    name="contact"
-                    onChange={handleUserInput}
-                    value={user.contact}
-                  />
-                </div>
-  
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="contact" className="form-label">
-                    <b>Age</b>
-                  </label>
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="age"
-                    name="age"
-                    onChange={handleUserInput}
-                    value={user.age}
-                  />
-                </div>
-  
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="description" className="form-label">
-                    <b> Street</b>
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="street"
-                    name="street"
-                    rows="3"
-                    onChange={handleUserInput}
-                    value={user.street}
-                  />
-                </div>
-  
+                
                 <div className="col-md-6 mb-3">
                   <label htmlFor="price" className="form-label">
                     <b>City</b>
@@ -242,20 +168,24 @@ const UserRegister = () => {
                     value={user.city}
                   />
                 </div>
+                
   
-                <div className="col-md-6 mb-3">
-                  <label htmlFor="pincode" className="form-label">
-                    <b>Pincode</b>
+                <div className="col-md-19 mb-3">
+                  <label htmlFor="description" className="form-label">
+                    <b>Address</b>
                   </label>
-                  <input
-                    type="number"
+                  <textarea
                     className="form-control"
-                    id="pincode"
-                    name="pincode"
+                    id="address"
+                    name="address"
+                    rows="3"
                     onChange={handleUserInput}
-                    value={user.pincode}
+                    value={user.address}
                   />
                 </div>
+  
+                
+  
   
                 <div className="d-flex aligns-items-center justify-content-center">
                   <input

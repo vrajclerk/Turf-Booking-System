@@ -24,7 +24,7 @@ const ViewMyBooking = () => {
 
   const retrieveAllBooking = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/book/ground/fetch?userId=" + user.id
+      `http://localhost:8080/api/book/ground/${user.id}`
     );
     console.log(response.data);
     return response.data;

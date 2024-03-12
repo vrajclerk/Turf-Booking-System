@@ -30,7 +30,7 @@ const AddGroundForm = () => {
     formData.append("height", ground.height);
     formData.append("price", ground.price);
     formData.append("length", ground.length);
-
+    formData.append('admin', localStorage.getItem('admin'));
     axios
       .post("http://localhost:8080/api/ground/add", formData)
       .then((result) => {

@@ -45,10 +45,8 @@ const ViewAllCustomer = () => {
             <table className="table table-hover text-color text-center">
               <thead className="table-bordered border-color bg-color custom-bg-text">
                 <tr>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
+                  <th scope="col">Full Name</th>
                   <th scope="col">Email Id</th>
-                  <th scope="col">Phone No</th>
                   <th scope="col">Address</th>
                   
                 </tr>
@@ -56,26 +54,19 @@ const ViewAllCustomer = () => {
               <tbody>
                 {allCustomer.map((customer) => {
                   return (
-                    {/* <tr>
+                    <tr>
                       <td>
-                        <b>{customer.firstName}</b>
-                      </td>
-                      
-                      <td>
-                        <b>{customer.lastName}</b>
+                        <b>{customer.fullName}</b>
                       </td>
                       <td>
                         <b>{customer.emailId}</b>
                       </td>
-                      <td>
-                        <b>{customer.contact}</b>
-                      </td>
                       
                       <td>
-                        <b>{customer.street+" "+customer.city+" "+customer.pincode}</b>
+                        <b>{customer.address+" "+customer.city+" "}</b>
                       </td>
                   
-                    </tr> */}
+                    </tr>
                   );
                 })}
               </tbody>

@@ -16,6 +16,7 @@ import ViewAllGround from './components/Ground/ViewAllGround';
 import MyWallet from './components/User/Mywallet';
 import AddReview from './components/Review/AddReview';
 import Ground from './components/Ground/Ground';
+import ViewAllCustomer from './components/User/ViewAllCustomer';
 
 function App() {
  
@@ -29,7 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/home/all/hotel/location" element={<HomePage />} />
+        {/* <Route path="/home/all/hotel/location" element={<HomePage />} /> */}
         
 
         <Route path="/contact" element={<ContactUs />} />
@@ -42,7 +43,7 @@ function App() {
 
         <Route path="admin/ground/add" element={<AddGroundForm />} />
         <Route path="book/ground/add" element={<AddGroundForm />} />
-        {/* <Route path="user/customer/all" element={<ViewAllCustomer />} /> */}
+        <Route path="user/customer/all" element={<ViewAllCustomer />} />
 
         <Route path="/book/ground/:groundId" element={<Ground />} />
         <Route path="user/ground/bookings" element={<ViewMyBooking />} />
